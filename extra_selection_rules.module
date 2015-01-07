@@ -1,0 +1,17 @@
+<?php
+
+function extra_selection_rules_ctools_plugin_directory($owner, $plugin_type) {
+  // We'll be nice and limit scandir() calls.
+  if ($owner == 'ctools' && $plugin_type == 'access') {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+
+function extra_selection_rules_term_has_children($tid){
+
+  $child = db_query("SELECT tid FROM {taxonomy_term_hierarchy} WHERE parent = ? LIMIT 1",array($tid))->fetchField();
+
+  return $child ? true : false;
+
+}

@@ -1,0 +1,5 @@
+name = Extra Selection Rules
+description = Provides more selection rules for page manager
+core = 7.x
+version = 1.0
+dependencies[] = page_manager
